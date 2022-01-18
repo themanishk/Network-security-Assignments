@@ -1,0 +1,61 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:600,700" rel="stylesheet">
+		<title>A simple calculator</title>
+	</head>
+	<body>
+		<div id="container">
+			<div id="calculator">
+				<div id="result">
+					<h1 style="color: red; ">Plain Text </h1>
+
+					<div id="output">
+						<textarea id="string1" style="font-size: 14pt"></textarea>
+					</div>
+
+					<h1 style="color: blue;">Cypher Text </h1>
+					<div id="history">
+						<textarea id="string2" style="font-size: 14pt"></textarea>
+					</div>
+			</div>
+		</div>
+
+      <script>
+        $('#string1').keyup(function(){ 
+          var string=$('#string1').val();  
+          
+          $('#string2').val(cypher(string)) 
+        })
+        $('#string2').keyup(function(){ 
+          var string=$('#string2').val();  
+          
+          $('#string1').val(cypher(string)) 
+        })
+        function cypher(string){
+          str='';
+          for( let i=0;i<string.length;i++){
+            var ch=string[i];
+            if(string[i]>='a' && string[i]<='z'){
+              
+               ch=String.fromCharCode(122 -ch.charCodeAt(0)+97);
+            }
+            else if(string[i]>='A' && string[i]<='Z'){
+   
+              ch=String.fromCharCode(90 -ch.charCodeAt(0)+65);
+            }
+            str+=ch; // for non english alphabet characters simply add the character to the cypher text without any modification
+          }
+          return str;
+        }
+
+      </script>
+
+
+
+
+
+		//<script src="script.js"></script>
+	</body>
+</html>
